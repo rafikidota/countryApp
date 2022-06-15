@@ -40,16 +40,17 @@ export class ByCountryComponent {
     this.query = query;
     if (query.length>0) {
       this.showSuggestion = true;
-    }else{
-      this.showSuggestion = false;
-    }
-    this.countryService.findCountryByName(query)
+      this.countryService.findCountryByName(query)
       .subscribe(countries => {
         this.suggestionedCountries = countries.splice(0, 5);
       }, (err) => {
         console.log(err);
         this.suggestionedCountries = [];
       });
+    }else{
+      this.showSuggestion = false;
+    }
+    
   }
   searchQuery(query: string) {
     this.search(query);
